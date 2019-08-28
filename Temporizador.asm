@@ -77,7 +77,10 @@ segment .data
 	
 	msjFin db "El tiempo Termino!!!"
 	lonFin equ $- msjFin
-
+	
+	msjFinCron db "Presione ctrl + C para terminar", 10
+	lonFinCrono equ $- msjFinCron
+	
 timeval:
 	tv_sec  dd 0
     tv_usec dd 0
@@ -265,7 +268,7 @@ _start:
 		espera 0, 10000000 ; espera de 10 ms
 
 		escribe ClearTerm, CLEARLEN
-		escribe mensajeInicialCronometro, lon_mensajeCrono
+		escribe msjFinCron, lonFinCrono
 		escribe centrar, lon_centrar
 		escribe minutos, lon3
 		escribe msj, lonmsj
@@ -342,3 +345,5 @@ _start:
 		mov eax,1
 		mov ebx,0
 		int 80h
+
+
